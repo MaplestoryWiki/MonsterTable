@@ -4,6 +4,12 @@ indexHtml = '''
 <!DOCTYPE html>
 <html>
 <head>
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+
     <title>MapleStory Monster Table</title>
 </head>
 
@@ -26,11 +32,21 @@ indexHtml = '''
     </tbody>
 </table>
 
-<script src="tablefilter/tablefilter.js"></script>
 
+<script src="js/jquery-lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(window).ready(function() {
+    $("img.lazy").lazyload({
+        effect : "fadeIn"
+    });
+});
+</script>
+
+
+<script src="js/tablefilter/tablefilter.js"></script>
 <script data-config>
     var filtersConfig = {
-        base_path: 'tablefilter/',
+        base_path: 'js/tablefilter/',
 
         paging: {
           results_per_page: ['Records: ', [10, 25, 50, 100]]
@@ -74,8 +90,8 @@ if __name__ == '__main__':
         tableLines = []
         for line in fin:
             data = json.loads(line)
-            tableLines.append('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'%(
-                                data['monName'],
+            tableLines.append('<tr><td>%s<br/><img class="lazy" data-original="https:%s" width="100"></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'%(
+                                data['monName'],data['monImg'],
                                 data['monLvl'],data['monHP'],
                                 data['monMP'],data['monPDR'],
                                 data['monMDR'],data['monEXP'],
