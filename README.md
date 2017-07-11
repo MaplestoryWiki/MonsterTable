@@ -7,6 +7,7 @@ It provides multiple sorting and filtering on monster's level, HP, MP, PDR, MDR.
 
 To create this website:
 
+- use [StrategyWiki crawler](https://github.com/MaplestoryWiki/StrategyWiki) to get the monster data
 - The sorting and filtering features are provided by [TableFilter](http://koalyptus.github.io/TableFilter/).
 - The image loading function is provided by [Lazy Load](http://appelsiini.net/projects/lazyload/).
 
